@@ -1,0 +1,71 @@
+---
+version: "3"
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy:alpine-0.6.0
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - ENABLE_IPV6=true
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true
+    volumes:
+      - /opt/nginx/certs:/etc/nginx/certs
+      - letsencrypt-vhost:/etc/nginx/vhost.d
+      - letsencrypt-html:/usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  letsencrypt-nginx-proxy-companion:
+    image: jrcs/letsencrypt-nginx-proxy-companion:v1.7
+    restart: always
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - /opt/nginx/certs:/etc/nginx/certs
+      - letsencrypt-vhost:/etc/nginx/vhost.d
+      - letsencrypt-html:/usr/share/nginx/html
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      # uncomment to test with staging certs that have no rate limits
+      - ACME_CA_URI=https://acme-staging.api.letsencrypt.org/directory
+
+  order-me-pizza:
+    image: "rkoval/order-me-pizza:latest"
+    restart: always
+    build:
+      context: ./order-me-pizza
+    environment:
+      - VIRTUAL_HOST=ryankoval.pizza,www.ryankoval.pizza,ryankoval.pizza.local
+      - LETSENCRYPT_HOST=ryankoval.pizza,www.ryankoval.pizza
+      - LETSENCRYPT_EMAIL=ryan@ryankoval.com
+      - NODE_CONFIG={}
+      - NODE_ENV=production
+
+  ryankoval.com:
+    image: "rkoval/ryankoval.com:latest"
+    restart: always
+    build:
+      context: ./ryankoval.com
+    environment:
+      - VIRTUAL_HOST=ryankoval.com,www.ryankoval.com,resume.ryankoval.com,ryankoval.local,resume.ryankoval.local
+      - LETSENCRYPT_HOST=ryankoval.com,www.ryankoval.com,resume.ryankoval.com
+      - LETSENCRYPT_EMAIL=ryan@ryankoval.com
+      - NODE_ENV=production
+
+  ghost:
+    image: ghost:1.22.7-alpine
+    restart: always
+    environment:
+      - VIRTUAL_HOST=blog.ryankoval.com,blog.ryankoval.local
+      - LETSENCRYPT_HOST=blog.ryankoval.com
+      - LETSENCRYPT_EMAIL=ryan@ryankoval.com
+      - NODE_ENV=production
+      - url=http://blog.ryankoval.com
+    volumes:
+      - ./ghost-data:/var/lib/ghost/content
+
+volumes:
+  letsencrypt-html:
+  letsencrypt-vhost:
