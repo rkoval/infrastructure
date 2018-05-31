@@ -2,7 +2,9 @@
 version: "3"
 services:
   nginx-proxy:
-    image: jwilder/nginx-proxy:alpine-0.6.0
+    image: "rkoval/nginx-proxy:latest"
+    build:
+      context: ./nginx
     restart: always
     ports:
       - "80:80"
@@ -13,7 +15,7 @@ services:
       - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true
     volumes:
       - /opt/nginx/certs:/etc/nginx/certs
-      - letsencrypt-vhost:/etc/nginx/vhost.d
+      - letsencrypt-vhost:/etc/nginx/vhost.d-letsencrypt
       - letsencrypt-html:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
