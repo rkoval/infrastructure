@@ -1,0 +1,6 @@
+[submodule "ryankoval.com"]
+	path = ryankoval.com
+	url = git@github.com:rkoval/ryankoval.com.git
+[submodule "order-me-pizza"]
+	path = order-me-pizza
+	url = git@github.com:rkoval/order-me-pizza.git
