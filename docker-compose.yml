@@ -2,7 +2,7 @@
 version: "3"
 services:
   nginx-proxy:
-    image: "rkoval/nginx-proxy:latest"
+    image: "rkoval/infrastructure:nginx-latest"
     build:
       context: ./nginx
     restart: always
