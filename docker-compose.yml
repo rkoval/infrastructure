@@ -68,6 +68,18 @@ services:
     volumes:
       - ./ghost-data:/var/lib/ghost/content
 
+
+  rooooney:
+    image: "rkoval/rooooney:latest"
+    restart: always
+    build:
+      context: ./rooooney
+    environment:
+      - VIRTUAL_HOST=rooooney.ryankoval.com,rooooney.local
+      - LETSENCRYPT_HOST=rooooney.ryankoval.com
+      - LETSENCRYPT_EMAIL=ryan@ryankoval.com
+      - NODE_ENV=production
+
 volumes:
   letsencrypt-html:
   letsencrypt-vhost:

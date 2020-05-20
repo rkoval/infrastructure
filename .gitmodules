@@ -4,3 +4,6 @@
 [submodule "order-me-pizza"]
 	path = order-me-pizza
 	url = git@github.com:rkoval/order-me-pizza.git
+[submodule "rooooney"]
+	path = rooooney
+	url = git@github.com:rkoval/rooooney.git
