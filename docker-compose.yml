@@ -20,7 +20,7 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
   letsencrypt-nginx-proxy-companion:
-    image: jrcs/letsencrypt-nginx-proxy-companion:v1.8.1
+    image: jrcs/letsencrypt-nginx-proxy-companion:v1.12.1
     restart: always
     depends_on:
       - nginx-proxy
@@ -29,9 +29,9 @@ services:
       - letsencrypt-vhost:/etc/nginx/vhost.d
       - letsencrypt-html:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    environment:
+    # environment:
       # uncomment to test with staging certs that have no rate limits
-      - ACME_CA_URI=https://acme-staging.api.letsencrypt.org/directory
+      # - ACME_CA_URI=https://acme-staging-v02.api.letsencrypt.org/directory
 
   order-me-pizza:
     image: "rkoval/order-me-pizza:latest"
