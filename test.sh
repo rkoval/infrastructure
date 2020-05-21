@@ -9,6 +9,11 @@ hosts=(
   'ryankoval.pizza'
   'www.ryankoval.pizza'
   'blog.ryankoval.com'
+  'avatar.ryankoval.com'
+  'bookmarks.ryankoval.com'
+  'github.ryankoval.com'
+  'linkedin.ryankoval.com'
+  'twitter.ryankoval.com'
 )
 
 set -x
