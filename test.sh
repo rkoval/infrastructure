@@ -12,11 +12,11 @@ hosts=(
   'avatar.ryankoval.com'
   'bookmarks.ryankoval.com'
   'github.ryankoval.com'
-  'linkedin.ryankoval.com'
   'twitter.ryankoval.com'
 )
 
-set -x
 for host in "${hosts[@]}"; do
-  curl -H "Host: $host" -L --fail centos
+  set -x
+  curl --silent -H "Host: $host" -L --fail centos >> /dev/null
+  set +x
 done
