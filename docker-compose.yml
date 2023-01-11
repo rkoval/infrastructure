@@ -2,7 +2,7 @@
 version: "3"
 services:
   nginx-proxy:
-    image: "rkoval/infrastructure:nginx-latest"
+    image: "ghcr.io/rkoval/infrastructure:nginx-latest"
     build:
       context: ./nginx
     restart: always
@@ -34,7 +34,7 @@ services:
       # - ACME_CA_URI=https://acme-staging-v02.api.letsencrypt.org/directory
 
   order-me-pizza:
-    image: "rkoval/order-me-pizza:latest"
+    image: "ghcr.io/rkoval/order-me-pizza:latest"
     restart: always
     build:
       context: ./order-me-pizza
@@ -46,7 +46,7 @@ services:
       - NODE_ENV=production
 
   ryankoval.com:
-    image: "rkoval/ryankoval.com:latest"
+    image: "ghcr.io/rkoval/ryankoval.com:latest"
     restart: always
     build:
       context: ./ryankoval.com
@@ -80,7 +80,7 @@ services:
       - NODE_ENV=production
 
   rooooney:
-    image: "rkoval/rooooney:latest"
+    image: "ghcr.io/rkoval/rooooney:latest"
     restart: always
     build:
       context: ./rooooney
