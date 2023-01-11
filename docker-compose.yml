@@ -68,6 +68,16 @@ services:
     volumes:
       - ./ghost-data:/var/lib/ghost/content
 
+  wedding-website:
+    image: "ghcr.io/rkoval/wedding-website:latest"
+    restart: always
+    build:
+      context: ./wedding-website
+    environment:
+      - VIRTUAL_HOST=caterina.and.ryankoval.com,caterina.and.ryankoval.local
+      - LETSENCRYPT_HOST=caterina.and.ryankoval.com
+      - LETSENCRYPT_EMAIL=ryan@ryankoval.com
+      - NODE_ENV=production
 
   rooooney:
     image: "rkoval/rooooney:latest"
