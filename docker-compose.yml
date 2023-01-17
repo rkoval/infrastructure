@@ -52,7 +52,7 @@ services:
       context: ./ryankoval.com
     environment:
       - VIRTUAL_HOST=ryankoval.com,www.ryankoval.com,resume.ryankoval.com,ryankoval.local,resume.ryankoval.local,avatar.ryankoval.com,avatar.ryankoval.local,bookmarks.ryankoval.com,dotfiles.ryankoval.com,github.ryankoval.com,linkedin.ryankoval.com,twitter.ryankoval.com,portfolio.ryankoval.com
-      - LETSENCRYPT_HOST=ryankoval.com,www.ryankoval.com,resume.ryankoval.com,avatar.ryankoval.com,bookmarks.ryankoval.com,dotfiles.ryankoval.com,github.ryankoval.com,linkedin.ryankoval.com,twitter.ryankoval.com
+      - LETSENCRYPT_HOST=ryankoval.com,www.ryankoval.com,resume.ryankoval.com,avatar.ryankoval.com,bookmarks.ryankoval.com,dotfiles.ryankoval.com,github.ryankoval.com,linkedin.ryankoval.com,twitter.ryankoval.com,portfolio.ryankoval.com
       - LETSENCRYPT_EMAIL=ryan@ryankoval.com
       - NODE_ENV=production
 

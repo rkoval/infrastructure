@@ -13,6 +13,7 @@ hosts=(
   'bookmarks.ryankoval.com'
   'github.ryankoval.com'
   'twitter.ryankoval.com'
+  'portfolio.ryankoval.com'
 )
 
 for host in "${hosts[@]}"; do
