@@ -7,3 +7,6 @@
 [submodule "rooooney"]
 	path = rooooney
 	url = git@github.com:rkoval/rooooney.git
+[submodule "wedding-website"]
+	path = wedding-website
+	url = git@github.com:rkoval/wedding-website.git
