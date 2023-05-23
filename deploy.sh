@@ -3,7 +3,7 @@ set -e
 
 eval $(docker-machine env -u)
 docker login
-docker-compose build
+docker buildx bake
 docker-compose push
 
 docker-machine env centos-docker-machine

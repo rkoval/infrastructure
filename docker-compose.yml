@@ -38,6 +38,9 @@ services:
     restart: always
     build:
       context: ./order-me-pizza
+      x-bake:
+        platforms:
+          - linux/amd64
     environment:
       - VIRTUAL_HOST=ryankoval.pizza,www.ryankoval.pizza,ryankoval.pizza.local
       - LETSENCRYPT_HOST=ryankoval.pizza,www.ryankoval.pizza
@@ -50,6 +53,9 @@ services:
     restart: always
     build:
       context: ./ryankoval.com
+      x-bake:
+        platforms:
+          - linux/amd64
     environment:
       - VIRTUAL_HOST=ryankoval.com,www.ryankoval.com,resume.ryankoval.com,ryankoval.local,resume.ryankoval.local,avatar.ryankoval.com,avatar.ryankoval.local,bookmarks.ryankoval.com,dotfiles.ryankoval.com,github.ryankoval.com,linkedin.ryankoval.com,twitter.ryankoval.com,portfolio.ryankoval.com
       - LETSENCRYPT_HOST=ryankoval.com,www.ryankoval.com,resume.ryankoval.com,avatar.ryankoval.com,bookmarks.ryankoval.com,dotfiles.ryankoval.com,github.ryankoval.com,linkedin.ryankoval.com,twitter.ryankoval.com,portfolio.ryankoval.com
@@ -73,6 +79,9 @@ services:
     restart: always
     build:
       context: ./wedding-website
+      x-bake:
+        platforms:
+          - linux/amd64
     environment:
       - VIRTUAL_HOST=caterina.and.ryankoval.com,caterina.and.ryankoval.local
       - LETSENCRYPT_HOST=caterina.and.ryankoval.com
@@ -84,6 +93,9 @@ services:
     restart: always
     build:
       context: ./rooooney
+      x-bake:
+        platforms:
+          - linux/amd64
     environment:
       - VIRTUAL_HOST=rooooney.ryankoval.com,rooooney.local
       - LETSENCRYPT_HOST=rooooney.ryankoval.com
