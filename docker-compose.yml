@@ -5,6 +5,9 @@ services:
     image: "ghcr.io/rkoval/infrastructure:nginx-latest"
     build:
       context: ./nginx
+      x-bake:
+        platforms:
+          - linux/amd64
     restart: always
     ports:
       - "80:80"

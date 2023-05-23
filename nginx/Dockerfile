@@ -1,4 +1,4 @@
-FROM nginxproxy/nginx-proxy:0.10.1-alpine
+FROM ghcr.io/nginx-proxy/nginx-proxy:1.3.1-alpine
 
 ADD ./conf.d /etc/nginx/conf.d
 ADD ./vhost.d /etc/nginx/vhost.d
