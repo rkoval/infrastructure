@@ -66,16 +66,27 @@ services:
       - NODE_ENV=production
 
   ghost:
-    image: ghost:1.22.7-alpine
+    image: ghost:5.55.2-alpine
     restart: always
     environment:
       - VIRTUAL_HOST=blog.ryankoval.com,blog.ryankoval.local
       - LETSENCRYPT_HOST=blog.ryankoval.com
       - LETSENCRYPT_EMAIL=ryan@ryankoval.com
       - NODE_ENV=production
-      - url=http://blog.ryankoval.com
+      - database__client=mysql
+      - database__connection__host=ghost-db
+      - database__connection__user=root
+      - database__connection__password=example
+      - database__connection__database=ghost
+      - url=https://blog.ryankoval.com
     volumes:
       - ./ghost-data:/var/lib/ghost/content
+
+  ghost-db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
 
   wedding-website:
     image: "ghcr.io/rkoval/wedding-website:latest"
