@@ -1,3 +1,4 @@
 nginx/certs
 ghost-data/
 local-ghost-data.tar.gz
+docker-compose.override.yml
