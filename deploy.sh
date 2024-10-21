@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+
+echo "you must be \`eval\`'d into centos to build marketing-site because there's some segfault bug with docker for mac when cross building!!"
 eval $(docker-machine env -u)
 docker login
 docker buildx bake
