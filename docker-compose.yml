@@ -65,7 +65,7 @@ services:
       - NODE_ENV=production
 
   ghost:
-    image: ghost:5.55.2-alpine
+    image: ghost:5.127.2-alpine
     restart: always
     environment:
       - VIRTUAL_HOST=blog.ryankoval.com,blog.ryankoval.local
